@@ -28,7 +28,7 @@ function PaymentForm() {
     setAlreadyPaid(false);
 
     try {
-      const res = await fetch(`http://localhost:5000/get-student/${enrollmentId}`);
+      const res = await fetch(`https://agentpi-backend-1.onrender.com/get-student/${enrollmentId}`);
       const data = await res.json();
 
       if (data.status !== 'approved') {
@@ -40,7 +40,7 @@ function PaymentForm() {
 
       const studentData = data.data;
 
-      const enrollRes = await fetch(`http://localhost:5000/check-enrollment/${encodeURIComponent(loginEmail)}`);
+      const enrollRes = await fetch(`https://agentpi-backend-1.onrender.com/check-enrollment/${encodeURIComponent(loginEmail)}`);
       const enrollData = await enrollRes.json();
 
       if (enrollData.status === 'enrolled') {
@@ -65,7 +65,7 @@ function PaymentForm() {
     const amount = getAmount(student.position, student.duration);
 
     try {
-      const orderRes = await fetch('http://localhost:5000/create-order', {
+      const orderRes = await fetch('https://agentpi-backend-1.onrender.com/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount }),
@@ -84,7 +84,7 @@ function PaymentForm() {
         handler: async function (response) {
           setVerifying(true);
           try {
-            const res = await fetch('http://localhost:5000/verify', {
+            const res = await fetch('https://agentpi-backend-1.onrender.com/verify', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({

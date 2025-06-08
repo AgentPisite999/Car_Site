@@ -23,7 +23,7 @@ function ScreeningForm() {
   useEffect(() => {
     if (!currentUserEmail) return;
 
-    fetch(`http://localhost:5000/all-screenings/${encodeURIComponent(currentUserEmail)}`)
+    fetch(`https://agentpi-backend-1.onrender.com/all-screenings/${encodeURIComponent(currentUserEmail)}`)
       .then(res => res.json())
       .then(result => {
         if (result.status === 'found') {
@@ -45,7 +45,7 @@ function ScreeningForm() {
     formData.append('userEmail', currentUserEmail || data.email);
 
     try {
-      const res = await fetch('http://localhost:5000/screening', {
+      const refetch = await fetch(`https://agentpi-backend-1.onrender.com/all-screenings/${encodeURIComponent(currentUserEmail)}`);
         method: 'POST',
         body: formData,
       });
@@ -55,7 +55,7 @@ function ScreeningForm() {
       if (result.status === 'success') {
         setMessage(`✅ Screening submitted successfully! Enrollment ID: ${result.enrollmentId}`);
         reset();
-        const refetch = await fetch(`http://localhost:5000/all-screenings/${encodeURIComponent(currentUserEmail)}`);
+        const refetch = await fetch(`https://agentpi-backend-1.onrender.com/all-screenings/${encodeURIComponent(currentUserEmail)}`);
         const updated = await refetch.json();
         if (updated.status === 'found') setSubmittedList(updated.data);
       } else if (result.status === 'duplicate') {
