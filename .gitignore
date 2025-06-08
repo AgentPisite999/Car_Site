@@ -1,23 +1,23 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore Node modules
+node_modules/
+student_backend/node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Ignore environment files
+.env
+student_backend/.env
 
-# testing
-/coverage
+# Ignore credentials
+student_backend/cred/Student.json
+student_backend/student.json
 
-# production
+# Build output
 /build
+/dist
 
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Mac system files
+.DS_Store
