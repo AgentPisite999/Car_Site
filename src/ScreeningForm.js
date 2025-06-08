@@ -19,7 +19,6 @@ function ScreeningForm() {
     boxSizing: 'border-box',
   };
 
-  // Fetch all previous screenings for the logged-in user
   useEffect(() => {
     if (!currentUserEmail) return;
 
