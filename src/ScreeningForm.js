@@ -44,10 +44,11 @@ function ScreeningForm() {
     formData.append('userEmail', currentUserEmail || data.email);
 
     try {
-      const res = await fetch('https://agentpi-backend-1.onrender.com/screening', {
+     const res = await fetch('https://agentpi-backend-1.onrender.com/screening', {
         method: 'POST',
         body: formData,
       });
+
 
       const result = await res.json();
 
