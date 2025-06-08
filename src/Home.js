@@ -35,7 +35,7 @@ function Home() {
 
   useEffect(() => {
     if (!email) return;
-    fetch(`http://localhost:5000/check-enrollment/${encodeURIComponent(email)}`)
+    fetch(`https://agentpi-backend-1.onrender.com/check-enrollment/${encodeURIComponent(email)}`)
       .then(res => res.json())
       .then(data => {
         if (data.status === "enrolled") {

@@ -15,7 +15,7 @@ function Login() {
       localStorage.setItem('user_name', name);
       localStorage.setItem('user_email', email);
 
-      await fetch('http://localhost:5000/log', {
+      await fetch('https://agentpi-backend-1.onrender.com/log', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),
