@@ -45,7 +45,7 @@ function ScreeningForm() {
     formData.append('userEmail', currentUserEmail || data.email);
 
     try {
-      const refetch = await fetch(`https://agentpi-backend-1.onrender.com/all-screenings/${encodeURIComponent(currentUserEmail)}`);
+      const res = await fetch('https://agentpi-backend-1.onrender.com/screening', {
         method: 'POST',
         body: formData,
       });
